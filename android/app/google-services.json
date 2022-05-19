@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243861719473",
+    "project_id": "presenca-42a00",
+    "storage_bucket": "presenca-42a00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243861719473:android:0b8d41ee016203a2ee5590",
+        "android_client_info": {
+          "package_name": "com.example.presenca_aluno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243861719473-uaug0ctrphr3qa8rn7heg5a4ilaan9oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzrKhiK9lWPex9WnPMu4koVDlOJI-Z-sM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243861719473-uaug0ctrphr3qa8rn7heg5a4ilaan9oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
