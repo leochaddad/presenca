@@ -1,7 +1,6 @@
-
-
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:presenca_aluno/pages/login.dart';
+import 'package:presenca_aluno/routes/router.gr.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,16 +17,12 @@ class HomePage extends StatelessWidget {
           // logout button
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(LoginPage.routeName);
-            
+              context.router.push(const StudentHistoryRoute());
             },
-            child: const Text('Logout'),
+            child: const Text('Go to history  page'),
           ),
         ],
       ),
     );
-    
-    
-    
   }
 }

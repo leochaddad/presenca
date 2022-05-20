@@ -1,32 +1,31 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:presenca_aluno/pages/home.dart';
-import 'package:presenca_aluno/pages/login.dart';
+import 'package:presenca_aluno/firebase_options.dart';
+import 'package:presenca_aluno/routes/router.gr.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      locale: const Locale('pt', 'BR'),
-      localizationsDelegates: [
-        FormBuilderLocalizations.delegate,
-      ],
-      initialRoute: '/',
-      
-      routes: {
-        '/': (context) => HomePage(),
-        '/login': (context) =>  LoginPage(),
-      },
-    );
+    return MaterialApp.router(
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        locale: const Locale('pt', 'BR'),
+        localizationsDelegates: [
+          FormBuilderLocalizations.delegate,
+        ]);
   }
 }
