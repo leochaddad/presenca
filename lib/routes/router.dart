@@ -3,12 +3,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:presenca_aluno/pages/home.dart';
 import 'package:presenca_aluno/pages/login.dart';
 import 'package:presenca_aluno/pages/student_history.dart';
+import 'package:presenca_aluno/routes/route_guard.dart';
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
     AutoRoute(page: LoginPage,
     path: '/login',
-    name: 'LoginRoute'
+    name: 'LoginRoute',
+    guards: [RouteGuard]
+
     ),
     AutoRoute(
       page: HomePage,
