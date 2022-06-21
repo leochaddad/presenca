@@ -3,11 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:presenca_aluno/firebase_options.dart';
 import 'package:presenca_aluno/routes/router.gr.dart';
+import 'package:presenca_aluno/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(create: (context) => AuthService()
+  , child: MyApp()));
+    
+
 }
 
 class MyApp extends StatelessWidget {

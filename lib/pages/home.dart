@@ -1,28 +1,28 @@
-import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter/material.dart';
-import 'package:presenca_aluno/routes/router.gr.dart';
+
+import 'package:presenca_aluno/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          // logout button
-          ElevatedButton(
-            onPressed: () {
-              context.router.push(const StudentHistoryRoute());
-            },
-            child: const Text('Go to history  page'),
+    return Consumer <AuthService>(
+      builder: (context, authService, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Home'),
+
           ),
-        ],
-      ),
-    );
-  }
+          body: Center(
+            child:  Text(authService.user?.email ?? 'No user'),
+          ),
+        );
+      },
+    )
+    ;
+
+}
 }

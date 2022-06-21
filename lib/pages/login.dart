@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -9,6 +10,20 @@ class LoginPage extends StatelessWidget {
 
   final _formKey = GlobalKey<FormBuilderState>();
 
+  static Future<User?> signIn(String email, String password) async {
+    final auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      final result = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      user = result.user;
+    } catch (e) {
+      print(e.toString());
+    }
+    return user;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,21 +52,22 @@ class LoginPage extends StatelessWidget {
                   FormBuilderValidators.required(
                     errorText: 'Password is required',
                   ),
-                  
-                  FormBuilderValidators.minLength(6, errorText: 'Password must be at least 6 characters'),
+                  FormBuilderValidators.minLength(6,
+                      errorText: 'Password must be at least 6 characters'),
                 ]),
               ),
               ElevatedButton(
                 onPressed: () {
-                _formKey.currentState!.save();
-                if(_formKey.currentState!.validate()) {
-                  print(_formKey.currentState!.value);
-                  // clear form
-                  _formKey.currentState!.reset();
-                }
+                  _formKey.currentState!.save();
+                  if (_formKey.currentState!.validate()) {
+                    // clear form
+                    signIn(_formKey.currentState!.value['email'] as String,
+                        _formKey.currentState!.value['password'] as String);
+
+                    _formKey.currentState!.reset();
+                  }
                 },
                 child: const Text('Login'),
-      
               ),
             ],
           ),
