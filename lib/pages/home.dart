@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Welcome ${authService.user?.email}'),
+                Text('Welcome ${authService.user?.displayName}'),
                 OutlinedButton(
                   child: const Text('Sign out'),
                   onPressed: () => HomePage.signOut(),

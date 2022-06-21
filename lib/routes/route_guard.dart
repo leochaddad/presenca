@@ -15,7 +15,6 @@ class RouteGuard extends AutoRedirectGuard {
   }
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-
     if (authService.user != null) return resolver.next();
     router.push(LoginRoute());
   }
