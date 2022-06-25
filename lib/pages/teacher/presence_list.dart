@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:presenca_aluno/services/auth_service.dart';
 import 'package:provider/provider.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 
 
@@ -29,7 +30,11 @@ class _PresenceListPageState extends State<PresenceListPage> {
         children: <Widget>[
           Expanded(
             child: Center(
-              child: Text('Lista de presença'),
+              child: QrImage(
+  data: widget.presenceList['id'],
+  version: QrVersions.auto,
+  
+),
             ),
             ),
           Expanded(
