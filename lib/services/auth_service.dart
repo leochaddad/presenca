@@ -12,6 +12,7 @@ class AuthService extends ChangeNotifier {
       this.user = firebaseUser;
       isLoading = false;
       notifyListeners();
+
     });
   }
 
