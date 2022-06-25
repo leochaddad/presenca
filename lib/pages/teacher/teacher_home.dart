@@ -38,6 +38,10 @@ class TeacherHomePage extends StatelessWidget {
                   child: const Text('Nova chamada'),
                   onPressed: () => context.router.push(NewPresenceListRoute())
                 ),
+                  OutlinedButton(
+                  child: const Text('Chamadas existentes'),
+                  onPressed: () => context.router.push(PresenceListsRoute()),
+                ),
                 OutlinedButton(
                   child: const Text('Sign out'),
                   onPressed: () => TeacherHomePage.signOut(),

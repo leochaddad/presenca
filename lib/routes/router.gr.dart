@@ -10,68 +10,77 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i6;
-import 'package:flutter/material.dart' as _i7;
+import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 
 import '../pages/home.dart' as _i3;
 import '../pages/login.dart' as _i1;
 import '../pages/signup.dart' as _i2;
 import '../pages/student_history.dart' as _i4;
 import '../pages/teacher/new_presence_list.dart' as _i5;
-import 'route_guard.dart' as _i8;
+import '../pages/teacher/presence_lists.dart' as _i6;
+import 'route_guard.dart' as _i9;
 
-class AppRouter extends _i6.RootStackRouter {
+class AppRouter extends _i7.RootStackRouter {
   AppRouter(
-      {_i7.GlobalKey<_i7.NavigatorState>? navigatorKey,
+      {_i8.GlobalKey<_i8.NavigatorState>? navigatorKey,
       required this.routeGuard})
       : super(navigatorKey);
 
-  final _i8.RouteGuard routeGuard;
+  final _i9.RouteGuard routeGuard;
 
   @override
-  final Map<String, _i6.PageFactory> pagesMap = {
+  final Map<String, _i7.PageFactory> pagesMap = {
     LoginRoute.name: (routeData) {
       final args = routeData.argsAs<LoginRouteArgs>(
           orElse: () => const LoginRouteArgs());
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: _i1.LoginPage(key: args.key));
     },
     SignupRoute.name: (routeData) {
       final args = routeData.argsAs<SignupRouteArgs>(
           orElse: () => const SignupRouteArgs());
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: _i2.SignupPage(key: args.key));
     },
     HomeRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i3.HomePage());
     },
     StudentHistoryRoute.name: (routeData) {
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.StudentHistoryPage());
     },
     NewPresenceListRoute.name: (routeData) {
       final args = routeData.argsAs<NewPresenceListRouteArgs>(
           orElse: () => const NewPresenceListRouteArgs());
-      return _i6.MaterialPageX<dynamic>(
+      return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: _i5.NewPresenceListPage(key: args.key));
+    },
+    PresenceListsRoute.name: (routeData) {
+      return _i7.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.PresenceListsPage());
     }
   };
 
   @override
-  List<_i6.RouteConfig> get routes => [
-        _i6.RouteConfig(LoginRoute.name, path: '/login'),
-        _i6.RouteConfig(SignupRoute.name, path: '/signup'),
-        _i6.RouteConfig(HomeRoute.name, path: '/', guards: [routeGuard]),
-        _i6.RouteConfig(StudentHistoryRoute.name, path: '/studentHistory'),
-        _i6.RouteConfig(NewPresenceListRoute.name, path: '/newPresenceList')
+  List<_i7.RouteConfig> get routes => [
+        _i7.RouteConfig(LoginRoute.name, path: '/login'),
+        _i7.RouteConfig(SignupRoute.name, path: '/signup'),
+        _i7.RouteConfig(HomeRoute.name, path: '/', guards: [routeGuard]),
+        _i7.RouteConfig(StudentHistoryRoute.name,
+            path: '/studentHistory', guards: [routeGuard]),
+        _i7.RouteConfig(NewPresenceListRoute.name,
+            path: '/newPresenceList', guards: [routeGuard]),
+        _i7.RouteConfig(PresenceListsRoute.name,
+            path: '/presenceLists', guards: [routeGuard])
       ];
 }
 
 /// generated route for
 /// [_i1.LoginPage]
-class LoginRoute extends _i6.PageRouteInfo<LoginRouteArgs> {
-  LoginRoute({_i7.Key? key})
+class LoginRoute extends _i7.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i8.Key? key})
       : super(LoginRoute.name, path: '/login', args: LoginRouteArgs(key: key));
 
   static const String name = 'LoginRoute';
@@ -80,7 +89,7 @@ class LoginRoute extends _i6.PageRouteInfo<LoginRouteArgs> {
 class LoginRouteArgs {
   const LoginRouteArgs({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -90,8 +99,8 @@ class LoginRouteArgs {
 
 /// generated route for
 /// [_i2.SignupPage]
-class SignupRoute extends _i6.PageRouteInfo<SignupRouteArgs> {
-  SignupRoute({_i7.Key? key})
+class SignupRoute extends _i7.PageRouteInfo<SignupRouteArgs> {
+  SignupRoute({_i8.Key? key})
       : super(SignupRoute.name,
             path: '/signup', args: SignupRouteArgs(key: key));
 
@@ -101,7 +110,7 @@ class SignupRoute extends _i6.PageRouteInfo<SignupRouteArgs> {
 class SignupRouteArgs {
   const SignupRouteArgs({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -111,7 +120,7 @@ class SignupRouteArgs {
 
 /// generated route for
 /// [_i3.HomePage]
-class HomeRoute extends _i6.PageRouteInfo<void> {
+class HomeRoute extends _i7.PageRouteInfo<void> {
   const HomeRoute() : super(HomeRoute.name, path: '/');
 
   static const String name = 'HomeRoute';
@@ -119,7 +128,7 @@ class HomeRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.StudentHistoryPage]
-class StudentHistoryRoute extends _i6.PageRouteInfo<void> {
+class StudentHistoryRoute extends _i7.PageRouteInfo<void> {
   const StudentHistoryRoute()
       : super(StudentHistoryRoute.name, path: '/studentHistory');
 
@@ -128,8 +137,8 @@ class StudentHistoryRoute extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.NewPresenceListPage]
-class NewPresenceListRoute extends _i6.PageRouteInfo<NewPresenceListRouteArgs> {
-  NewPresenceListRoute({_i7.Key? key})
+class NewPresenceListRoute extends _i7.PageRouteInfo<NewPresenceListRouteArgs> {
+  NewPresenceListRoute({_i8.Key? key})
       : super(NewPresenceListRoute.name,
             path: '/newPresenceList', args: NewPresenceListRouteArgs(key: key));
 
@@ -139,10 +148,19 @@ class NewPresenceListRoute extends _i6.PageRouteInfo<NewPresenceListRouteArgs> {
 class NewPresenceListRouteArgs {
   const NewPresenceListRouteArgs({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
     return 'NewPresenceListRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [_i6.PresenceListsPage]
+class PresenceListsRoute extends _i7.PageRouteInfo<void> {
+  const PresenceListsRoute()
+      : super(PresenceListsRoute.name, path: '/presenceLists');
+
+  static const String name = 'PresenceListsRoute';
 }
