@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:presenca_aluno/pages/home.dart';
+
 import 'package:presenca_aluno/routes/router.gr.dart';
 
 class LoginPage extends StatelessWidget {
@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
 
   final _formKey = GlobalKey<FormBuilderState>();
 
-  static Future<User?> signIn(String email, String password) async {
+   Future<User?> signIn(String email, String password) async {
     final auth = FirebaseAuth.instance;
     User? user;
     try {
@@ -28,8 +28,11 @@ class LoginPage extends StatelessWidget {
       user = result.user;
        
     } catch (e) {
-      print(e.toString());
+      _formKey.currentState?.invalidateField(name: 'password', errorText: "Senha ou usuário incorreto");
+
     }
+  
+    
     return user;
   }
 
@@ -68,10 +71,8 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   _formKey.currentState!.save();
                   if (_formKey.currentState!.validate()) {
-                    // clear form
-                    signIn(_formKey.currentState!.value['email'] as String,
+                     signIn(_formKey.currentState!.value['email'] as String,
                         _formKey.currentState!.value['password'] as String);
-                    _formKey.currentState!.reset();
                   }
                 },
                 child: const Text('Login'),
