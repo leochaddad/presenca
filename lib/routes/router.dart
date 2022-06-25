@@ -4,6 +4,7 @@ import 'package:presenca_aluno/pages/home.dart';
 import 'package:presenca_aluno/pages/login.dart';
 import 'package:presenca_aluno/pages/signup.dart';
 import 'package:presenca_aluno/pages/student_history.dart';
+import 'package:presenca_aluno/pages/teacher/new_presence_list.dart';
 import 'package:presenca_aluno/routes/route_guard.dart';
 
 @MaterialAutoRouter(
@@ -27,6 +28,14 @@ import 'package:presenca_aluno/routes/route_guard.dart';
       page: StudentHistoryPage,
       name: 'StudentHistoryRoute',
       path: '/studentHistory',
+      guards: [RouteGuard]
+    ),
+    AutoRoute(
+      page: NewPresenceListPage,
+      name: 'NewPresenceListRoute',
+      path: '/newPresenceList',
+      guards: [RouteGuard]
+
     ),
 
   ],
