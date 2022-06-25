@@ -35,7 +35,6 @@ class NewPresenceListPage extends StatelessWidget {
           'start_time': _formKey.currentState!.value['start_time'],
           'end_time': _formKey.currentState!.value['end_time'],
           'teacher': authService.user!.uid,
-          'students': [],
         });
         context.router.push(const HomeRoute());
       }

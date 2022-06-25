@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:presenca_aluno/pages/teacher/presence_list.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:presenca_aluno/routes/router.gr.dart';
 
 import 'package:presenca_aluno/services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -35,9 +38,11 @@ class _PresenceListsPageState extends State<PresenceListsPage> {
               itemBuilder: (context, index) {
                 final doc = snapshot.data!.docs[index];
                 Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+                data['id'] = doc.id;
                 return ListTile(
                   title: Text(data['name'] ?? 'Nome não definido'),
-                  onTap: () => print(doc.id),
+                  onTap: () => context.router.push(PresenceListRoute(presenceList: data)),
                 );
               },
             );
