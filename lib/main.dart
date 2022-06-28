@@ -8,12 +8,11 @@ import 'package:presenca_aluno/services/auth_service.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(ChangeNotifierProvider(create: (context) => AuthService()
-  , child: MyApp()));
-    
-
+  runApp(ChangeNotifierProvider(
+      create: (context) => AuthService(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:presenca_aluno/pages/home.dart';
 import 'package:presenca_aluno/pages/login.dart';
 import 'package:presenca_aluno/pages/signup.dart';
+import 'package:presenca_aluno/pages/student/read_presence.dart';
 import 'package:presenca_aluno/pages/student_history.dart';
 import 'package:presenca_aluno/pages/teacher/new_presence_list.dart';
 import 'package:presenca_aluno/pages/teacher/presence_list.dart';
@@ -50,6 +51,13 @@ import 'package:presenca_aluno/routes/route_guard.dart';
       page: PresenceListPage,
       name: 'PresenceListRoute',
       path: '/presenceList',
+      guards: [RouteGuard]
+
+    ),
+          AutoRoute(
+      page: ReadPresencePage,
+      name: 'ReadPresenceRoute',
+      path: '/readPresence',
       guards: [RouteGuard]
 
     ),

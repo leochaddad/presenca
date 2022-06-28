@@ -3,6 +3,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:presenca_aluno/pages/student/student_home.dart';
 import 'package:presenca_aluno/pages/teacher/teacher_home.dart';
 
 import 'package:presenca_aluno/services/auth_service.dart';
@@ -19,6 +20,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TeacherHomePage();
+    return StudentHomePage();
   }
 }
